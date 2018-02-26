@@ -2,8 +2,7 @@ function countProfit(shoppers) {
     var listBarang = [ ['Sepatu Stacattu', 1500000, 10],
                        ['Baju Zoro', 500000, 2],
                        ['Sweater Uniklooh', 175000, 1]
-                     ];
-         
+                     ];       
       var arr=[]
   for(var i=0;i<listBarang.length;i++){
       var pembeli=[]
@@ -17,9 +16,7 @@ function countProfit(shoppers) {
                 listBarang[i][2] -= shoppers[j].amount
                 totProfit= shoppers[j].amount * listBarang[i][1]
             } 
-        } 
-      
-       
+        }      
       }    
       objHasil.shoppers=pembeli
       objHasil.leftOver=listBarang[i][2]
@@ -27,18 +24,8 @@ function countProfit(shoppers) {
      
       arr.push(objHasil)
       
-  }                 
-                     
-                     
-                     
-                     
+  }                                     
       return arr               
-                     
-                     
-                     
-                     
-                     
-
 }
   // TEST CASES
 //   console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 2}, {name: 'Vanessa', product: 'Sepatu Stacattu', amount: 3}, {name: 'Rani', product: 'Sweater Uniklooh', amount: 2}]));
