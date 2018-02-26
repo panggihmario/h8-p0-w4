@@ -1,38 +1,8 @@
 function shoppingTime(memberId, money) {
     // you can only write your code here!
-    var barang=['Sepatu Stacattu','Baju Zoro','Baju H&N','Sweater Uniklooh','Casing Handphone']
-    var sisa=money
-    var list=[]
-    for(var i=0;i<barang.length;i++){
-        if(sisa>=1500000){
-            list.push(barang[0])
-            sisa-=1500000
-        }
-        else if(sisa>=500000){
-            list.push(barang[1])
-            sisa-=500000
-        }
-        else if(sisa>=250000){
-            list.push(barang[2])
-            sisa-=250000
-        }
-        else if(sisa>=175000){
-            list.push(barang[3])
-            sisa-=175000
-        }
-        else if(sisa>=50000){
-            list.push(barang[4])
-            sisa-=50000
-            break
-        }
-    }
-    var obj={}
-    obj.memberId=memberId;
-    obj.money=money
-    obj.listPurchased=list
-    obj.changeMoney=sisa
-
-    if(memberId === ''){
+    var barang=[['Sepatu Stacattu',1500000],['Baju Zoro',500000],['Baju H&N',250000],['Sweater Uniklooh',175000],['Casing Handphone',50000]]
+    
+     if(memberId === ''){
         return 'Mohon maaf, toko X hanya berlaku untuk member saja'
     }
     else if(memberId === undefined && money === undefined){
@@ -41,11 +11,27 @@ function shoppingTime(memberId, money) {
     else if(money < 50000){
         return "Mohon maaf, uang tidak cukup"
     }
+    
+    var listBarang=[]
+    var sisa=money
+    var obj={}
+    for(var i=0; i<barang.length;i++){
+      for(var j=0;j<barang.length;j++){
+        if(sisa >=barang[i][j]){
+          sisa-=barang[i][j]
+          listBarang.push(barang[i][0])
+        }
+      }
+    }
+    obj.memberID=memberId
+    obj.money=money
+    obj.listPurchased=listBarang
+    obj.changeMoney=sisa
     return obj
   }
   
   // TEST CASES
-//   console.log(shoppingTime('1820RzKrnWn08', 2475000));
+  console.log(shoppingTime('1820RzKrnWn08', 2475000));
     //{ memberId: '1820RzKrnWn08',
     // money: 2475000,
     // listPurchased:

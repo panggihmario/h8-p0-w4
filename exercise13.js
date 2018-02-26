@@ -3,67 +3,43 @@ function countProfit(shoppers) {
                        ['Baju Zoro', 500000, 2],
                        ['Sweater Uniklooh', 175000, 1]
                      ];
-    var stockSepatu  = listBarang[0][2]
-    var stockBaju    = listBarang[1][2]
-    var stockSweater = listBarang[2][2]
-   
-    var pembeliSepatu = []
-    var pembeliBaju  = []
-    var pembeliSweater = []
+         
+      var arr=[]
+  for(var i=0;i<listBarang.length;i++){
+      var pembeli=[]
+      objHasil={}
+      objHasil.product=listBarang[i][0]
+      for(var j=0;j<shoppers.length;j++){
+        if(listBarang[i][0] === shoppers[j].product){
+          // console.log(shoppers[j])
+            if(listBarang[i][2] >=shoppers[j].amount){
+                pembeli.push(shoppers[j].name)
+                listBarang[i][2] -= shoppers[j].amount
+                totProfit= shoppers[j].amount * listBarang[i][1]
+            } 
+        } 
+      
+       
+      }    
+      objHasil.shoppers=pembeli
+      objHasil.leftOver=listBarang[i][2]
+      objHasil.totProfit=totProfit
+     
+      arr.push(objHasil)
+      
+  }                 
+                     
+                     
+                     
+                     
+      return arr               
+                     
+                     
+                     
+                     
+                     
 
-    var final=[]
-    for(var i =0;i<shoppers.length;i++){
-        if(shoppers[i].product ==='Sepatu Stacattu'){
-            if(stockSepatu >=shoppers[i].amount){
-                pembeliSepatu.push(shoppers[i].name)
-                stockSepatu-= shoppers[i].amount;
-            }
-        }
-        else if(shoppers[i].product === 'Baju Zoro'){
-            if(stockBaju >=shoppers[i].amount){
-                pembeliBaju.push(shoppers[i].name)
-                stockBaju-= shoppers[i].amount;
-            }
-        }
-        else if(shoppers[i].product === 'Sweater Uniklooh'){
-            if(stockSweater >=shoppers[i].amount){
-                pembeliSweater.push(shoppers[i].name)
-                stockSweater-= shoppers[i].amount;
-            }
-        }
-    }
-    var pembeli;
-    var sisa;
-   
-    for(var j=0;j<listBarang.length;j++){
-        if(listBarang[j][0]==='Sepatu Stacattu'){
-            pembeli=pembeliSepatu
-            sisa=stockSepatu
-            totProfit=(listBarang[j][2]-stockSepatu)*listBarang[j][1]
-        }
-        else if(listBarang[j][0]==='Baju Zoro'){
-            pembeli=pembeliBaju
-            sisa=stockBaju
-            totProfit=(listBarang[j][2]-stockBaju)*listBarang[j][1]
-        }
-        else if(listBarang[j][0] === 'Sweater Uniklooh'){
-            pembeli=pembeliSweater
-            sisa=stockSweater
-            totProfit=(listBarang[j][2]-stockSweater)*listBarang[j][1]
-
-        }
-        
-    var tampung={}
-    tampung.product=listBarang[j][0];
-    tampung.shoppers=pembeli
-    tampung.leftOver=sisa
-    tampung.totalProfit=totProfit
-    final.push(tampung);
-    }
-    
-    return final
-  }
-  
+}
   // TEST CASES
 //   console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 2}, {name: 'Vanessa', product: 'Sepatu Stacattu', amount: 3}, {name: 'Rani', product: 'Sweater Uniklooh', amount: 2}]));
   //[ { product: 'Sepatu Stacattu',
@@ -92,7 +68,7 @@ function countProfit(shoppers) {
   //     shoppers: [ 'Rani' ],
   //     leftOver: 0,
   //     totalProfit: 175000 } ]
-  console.log(countProfit([{name: 'Windi', product: 'Sepatu Naiki', amount: 5}]));
+  // console.log(countProfit([{name: 'Windi', product: 'Sepatu Naiki', amount: 5}]));
   // [ { product: 'Sepatu Stacattu',
   //     shoppers: [],
   //     leftOver: 10,
