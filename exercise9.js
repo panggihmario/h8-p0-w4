@@ -1,14 +1,12 @@
 function tukarBesarKecil(kalimat) {
     // you can only write your code here!
-    var splitKal=kalimat.split('');
-    var panjang=kalimat.length
     var result=[]
-    for(var i=0;i<panjang;i++){
-        if(splitKal[i]===splitKal[i].toUpperCase()){
-            result[i] = splitKal[i].toLowerCase();
+    for(var i=0;i<kalimat.length;i++){
+        if(kalimat[i]===kalimat[i].toUpperCase()){
+            result[i] = kalimat[i].toLowerCase();
         }
-        else if(splitKal[i]===splitKal[i].toLowerCase()){
-            result[i]=splitKal[i].toUpperCase()
+        else if(kalimat[i]===kalimat[i].toLowerCase()){
+            result[i]=kalimat[i].toUpperCase()
         }
     }  
         return result.join('')

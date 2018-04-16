@@ -1,21 +1,16 @@
 function cariMedian(arr) {
   // you can only write your code here!
-var panjang=arr.length
-var bagi=0
-var bagi1=0
-var bagi2=0
-for(var i=0;i<panjang;i++){
-  if(panjang%2 !==0){
-    bagi=(panjang-1)/2
-    var hasil=arr[bagi]
+  if(arr.length%2 !==0){
+    var median=Math.floor(arr.length/2)
+    return arr[median]
   }
-  else{
-    bagi1=(panjang-2)/2
-    bagi2=((panjang-2)/2)+1
-    var hasil=(arr[bagi1]+arr[bagi2])/2
+  else {
+    var median1=arr.length/2 - 1
+    var median2=arr.length/2
+    var hasil=(arr[median1] + arr[median2])/2
+    return hasil
   }
-}
-return hasil
+  
 }
 
 // TEST CASES
